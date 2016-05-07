@@ -36,15 +36,15 @@ public:
 		vector<int> left;
     	vector<int> right;
 
-		if(!root)return result;    	
+		if(!root)return result;
 
 		result.push_back(root->val);
         left = preorderTraversal(root->left);
         right = preorderTraversal(root->right);
 
         if(left.size() != 0)result.insert(result.end(), left.begin(), left.end());
-        if(right.size() != 0)result.insert(result.end(), right.begin(), right.end());    		    		
-    	
+        if(right.size() != 0)result.insert(result.end(), right.begin(), right.end());
+
     	return result;
     }
 };*/

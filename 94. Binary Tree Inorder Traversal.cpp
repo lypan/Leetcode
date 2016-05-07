@@ -24,6 +24,6 @@ public:
     	    	root = root->right;
     	    }
     	}
-    	return nodevec;    
+    	return nodevec;
     }
 };
