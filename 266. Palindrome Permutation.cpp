@@ -38,3 +38,18 @@ public:
 //         else return true;
 //     }
 // };
+
+
+// Java
+// public class Solution {
+//     public boolean canPermutePalindrome(String s) {
+//         Set<Character> set = new HashSet<>();
+//
+//         for(Character ch : s.toCharArray()) {
+//             if(set.contains(ch))set.remove(ch);
+//             else set.add(ch);
+//         }
+//
+//         return set.size() == 0 || set.size() == 1;
+//     }
+// }
