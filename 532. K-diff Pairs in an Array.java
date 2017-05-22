@@ -9,10 +9,10 @@ public class Solution {
         int count = 0;
         for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
             if(k == 0) {
-                if(entry.getValue() >= 2)count ++
+                if(entry.getValue() >= 2)count ++;
             }
             else {
-                if(map.containsKey(entry.getKey() + k)count ++;
+                if(map.containsKey(entry.getKey() + k))count ++;
             }
         }
 
