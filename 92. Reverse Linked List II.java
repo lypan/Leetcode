@@ -30,8 +30,8 @@ public class Solution {
             cur = next;
         }
         // 2. connect head and tail node
-        tail1.next = prev;
-        tail2.next = cur;
+        headNode.next = prev;
+        tailNode.next = cur;
 
 
         return dummyHead.next;
