@@ -1,14 +1,20 @@
+// reference:http://www.geeksforgeeks.org/union-find/
 class Solution {
-    public int countComponents(int n, int[][] edges) {
-
+    public boolean validTree(int n, int[][] edges) {
         WeightedQuickUnionUF wquf = new WeightedQuickUnionUF(n);
-        for(int[] edge : edges) {
-            int i = edge[0];
-            int j = edge[1];
 
-            wquf.union(i, j);
+        for(int[] edge : edges) {
+            int node1 = edge[0];
+            int node2 = edge[1];
+
+            int root1 = wquf.find(node1);
+            int root2 = wquf.find(node2);
+
+            if(root1 == root2)return false;
+
+            wquf.union(node1, node2);
         }
-        return wquf.count();
+        return wquf.count() == 1;
     }
 }
 
@@ -21,11 +27,11 @@ class WeightedQuickUnionUF {
     public WeightedQuickUnionUF(int n) {
         parent = new int[n];
         size = new int[n];
-        count = n;
 
         for(int i = 0; i < n; i ++) {
             parent[i] = i;
             size[i] = 1;
+            count ++;
         }
     }
 

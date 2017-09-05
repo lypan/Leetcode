@@ -1,17 +1,19 @@
 class Solution {
-    public int countComponents(int n, int[][] edges) {
+    public int findCircleNum(int[][] M) {
+        if(M == null || M.length == 0)return 0;
+        int n = M.length;
 
         WeightedQuickUnionUF wquf = new WeightedQuickUnionUF(n);
-        for(int[] edge : edges) {
-            int i = edge[0];
-            int j = edge[1];
 
-            wquf.union(i, j);
+        // M[i][j] means (i, j) are friends
+        for(int i = 0; i < n; i ++) {
+            for(int j = i + 1; j < n; j ++) {
+                if(M[i][j] == 1)wquf.union(i, j);
+            }
         }
         return wquf.count();
     }
 }
-
 
 class WeightedQuickUnionUF {
     private int[] parent;
@@ -19,9 +21,9 @@ class WeightedQuickUnionUF {
     private int count;
 
     public WeightedQuickUnionUF(int n) {
+        count = n;
         parent = new int[n];
         size = new int[n];
-        count = n;
 
         for(int i = 0; i < n; i ++) {
             parent[i] = i;
