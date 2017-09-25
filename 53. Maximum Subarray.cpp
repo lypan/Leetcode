@@ -1,22 +1,36 @@
 class Solution {
-public:
-    int maxSubArray(vector<int>& nums) {
-        int currentSum = nums[0];
-        int maxSum = nums[0];
+    public int maxSubArray(int[] nums) {
+        // reference: https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane.27s_algorithm
+        int max_ending_here = nums[0];
+        int max_so_far = nums[0];
 
-        for(int i = 1; i < nums.size(); i ++) {
-            currentSum = max(nums[i], currentSum + nums[i]);
-            maxSum = max(maxSum, currentSum);
+        for(int i = 1; i < nums.length; i ++) {
+            max_ending_here = Math.max(nums[i], max_ending_here + nums[i]);
+            max_so_far = Math.max(max_so_far, max_ending_here);
         }
-        return maxSum;
+        return max_so_far;
     }
-};
+}
+// sol2
+// class Solution {
+// public:
+//     int maxSubArray(vector<int>& nums) {
+//         int currentSum = nums[0];
+//         int maxSum = nums[0];
+//
+//         for(int i = 1; i < nums.size(); i ++) {
+//             currentSum = max(nums[i], currentSum + nums[i]);
+//             maxSum = max(maxSum, currentSum);
+//         }
+//         return maxSum;
+//     }
+// };
 
 // reference:http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 // reference:http://www.geeksforgeeks.org/divide-and-conquer-maximum-sum-subarray/
 
 
-// sol2
+// sol3
 // class Solution {
 // public:
 //     int maxSubArray(vector<int>& nums) {
