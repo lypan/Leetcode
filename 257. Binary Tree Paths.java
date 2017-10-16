@@ -7,34 +7,57 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
-        List<String> resultList = new ArrayList<String>();
-
-        if(root == null)return resultList;
-        else dfs(root, "", resultList);
-
-        return resultList;
+        List<String> result = new ArrayList<>();
+        if(root == null)return result;
+        dfs(root, result, "");
+        return result;
     }
-
-    public void dfs(TreeNode root, String str, List<String> resultList) {
-        if(root == null)return;
-
-        // leaf node
-        if(root.left == null && root.right == null) {
-            str = str.concat(String.valueOf(root.val));
-            resultList.add(str);
-            return;
-        }
-        else {
-            str = str.concat(String.valueOf(root.val));
-            str = str.concat("->");
-        }
-        dfs(root.left, str, resultList);
-        dfs(root.right, str, resultList);
+    private void dfs(TreeNode root, List<String> result, String path) {
+        if(root.left == null && root.right == null)result.add(path + root.val);
+        if(root.left != null)dfs(root.left, result, path + root.val + "->");
+        if(root.right != null)dfs(root.right, result, path + root.val + "->");
     }
-
 }
+
+// /**
+//  * Definition for a binary tree node.
+//  * public class TreeNode {
+//  *     int val;
+//  *     TreeNode left;
+//  *     TreeNode right;
+//  *     TreeNode(int x) { val = x; }
+//  * }
+//  */
+// public class Solution {
+//     public List<String> binaryTreePaths(TreeNode root) {
+//         List<String> resultList = new ArrayList<String>();
+//
+//         if(root == null)return resultList;
+//         else dfs(root, "", resultList);
+//
+//         return resultList;
+//     }
+//
+//     public void dfs(TreeNode root, String str, List<String> resultList) {
+//         if(root == null)return;
+//
+//         // leaf node
+//         if(root.left == null && root.right == null) {
+//             str = str.concat(String.valueOf(root.val));
+//             resultList.add(str);
+//             return;
+//         }
+//         else {
+//             str = str.concat(String.valueOf(root.val));
+//             str = str.concat("->");
+//         }
+//         dfs(root.left, str, resultList);
+//         dfs(root.right, str, resultList);
+//     }
+//
+// }
 
 
 
