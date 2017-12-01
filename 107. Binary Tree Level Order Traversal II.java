@@ -43,20 +43,20 @@ class Solution {
  *     TreeNode(int x) { val = x; }
  * }
  */
-// class Solution {
-//     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-//         List<List<Integer>> result = new ArrayList<>();
-//         if(root == null)return result;
-//         dfs(root, 0, result);
-//         return result;
-//     }
-//
-//     private void dfs(TreeNode root, int level, List<List<Integer>> result) {
-//         if(root == null)return;
-//         if(level >= result.size())result.add(0, new ArrayList<>());
-//         dfs(root.left, level + 1, result);
-//         dfs(root.right, level + 1, result);
-//         // ex: 3 levels from 0 ~ 2, result size should have 3 for 3 levels
-//         result.get((result.size() - 1) - level).add(root.val);
-//     }
-// }
+class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null)return result;
+        dfs(root, 0, result);
+        return result;
+    }
+
+    private void dfs(TreeNode root, int level, List<List<Integer>> result) {
+        if(root == null)return;
+        if(level >= result.size())result.add(0, new ArrayList<>());
+        dfs(root.left, level + 1, result);
+        dfs(root.right, level + 1, result);
+        // ex: 3 levels from 0 ~ 2, result size should have 3 for 3 levels
+        result.get((result.size() - 1) - level).add(root.val);
+    }
+}

@@ -7,13 +7,16 @@ public class Solution {
         }
         return false;
     }
-    public boolean binary_search(long low, long high, long target) {
-        long middle = (low) + (high - low) / 2;
-        if(low > high)return false;
+    public boolean binary_search(long lo, long hi, long target) {
+        while(lo < hi) {
+            long mid = lo + (hi - lo) / 2;
 
-        if(middle * middle == target)return true;
-        else if(middle * middle > target) return binary_search(low, middle - 1, target);
-    	return binary_search(middle + 1, high, target);
+            if(mid * mid > target)hi = mid - 1;
+            else if(mid * mid < target)lo = mid + 1;
+            else return true;
+        }
+        if(lo * lo == target)return true;
+        return false;
     }
 }
 
